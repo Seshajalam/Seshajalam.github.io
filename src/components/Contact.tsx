@@ -8,7 +8,7 @@ import GlassCard from './ui/GlassCard';
 import { contactInfo } from '@/lib/data';
 
 export default function Contact() {
-  const [status, setStatus] = useState<'idle' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -23,16 +23,33 @@ export default function Contact() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.open(`mailto:${contactInfo.email}?subject=${subject}&body=${body}`, '_self');
-    setStatus('success');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/seshajalamg@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact from ${formData.name}`,
+        }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const infoItems = [
@@ -132,13 +149,25 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full font-medium bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                  disabled={status === 'sending'}
+                  className="w-full py-3 rounded-full font-medium bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:scale-[1.02] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  <FaPaperPlane /> Send Message
+                  {status === 'sending' ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      <FaPaperPlane /> Send Message
+                    </>
+                  )}
                 </button>
                 {status === 'success' && (
                   <p className="text-green-400 text-center text-sm">
-                    Opening your email client... Send the email to complete!
+                    Message sent successfully! I&apos;ll get back to you soon.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-400 text-center text-sm">
+                    Something went wrong. Please try again or email me directly.
                   </p>
                 )}
               </form>
