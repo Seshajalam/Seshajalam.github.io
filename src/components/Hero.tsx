@@ -49,9 +49,7 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="text-xl sm:text-2xl md:text-3xl text-[var(--text-secondary)] mb-8 h-10">
           <TypeAnimation
             sequence={[
-              'AI Research Intern',
-              2000,
-              'ML Engineer',
+              'AI Engineer',
               2000,
               'Deep Learning Enthusiast',
               2000,
