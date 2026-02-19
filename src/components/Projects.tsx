@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from './ui/SectionHeading';
 import GlassCard from './ui/GlassCard';
 import { projects } from '@/lib/data';
-import { FaChevronDown, FaChevronUp, FaPlayCircle } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 interface ProjectDescription {
   summary: string;
@@ -21,7 +21,6 @@ function parseDescription(text: string): ProjectDescription {
 export default function Projects() {
   const [descriptions, setDescriptions] = useState<Record<string, ProjectDescription>>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-  const [videoAvailable, setVideoAvailable] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     projects.forEach(async (project) => {
@@ -37,14 +36,6 @@ export default function Projects() {
           ...prev,
           [project.id]: { summary: 'Description loading...', full: '' },
         }));
-      }
-    });
-    projects.forEach(async (project) => {
-      try {
-        const res = await fetch(project.video, { method: 'HEAD' });
-        setVideoAvailable((prev) => ({ ...prev, [project.id]: res.ok }));
-      } catch {
-        setVideoAvailable((prev) => ({ ...prev, [project.id]: false }));
       }
     });
   }, []);
@@ -70,22 +61,13 @@ export default function Projects() {
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Video */}
                   <div className="relative aspect-video rounded-xl overflow-hidden bg-black/30">
-                    {videoAvailable[project.id] ? (
-                      <video
-                        className="w-full h-full object-cover"
-                        controls
-                        preload="metadata"
-                        playsInline
-                      >
-                        <source src={project.video} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/10 border border-[var(--glass-border)]">
-                        <FaPlayCircle className="text-5xl text-[var(--accent-primary)] opacity-50 mb-3" />
-                        <p className="text-[var(--text-secondary)] text-sm font-medium">Video Demo</p>
-                        <p className="text-[var(--text-secondary)]/60 text-xs mt-1">Coming soon</p>
-                      </div>
-                    )}
+                    <iframe
+                      className="w-full h-full"
+                      src={project.video}
+                      title={project.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
 
                   {/* Content */}

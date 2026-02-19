@@ -72,7 +72,7 @@ export const projects = [
     title: "Hand Gesture Recognition",
     subtitle: "Real-Time YouTube Control System",
     descriptionFile: "/project_descriptions/hand.txt",
-    video: "/videos/Hand_gesture_video.mp4",
+    video: "https://www.youtube.com/embed/EjSEVPDqWfI",
     techStack: ["Python", "OpenCV", "MediaPipe", "TensorFlow", "Keras", "PyAutoGUI"],
     metrics: [
       { label: "Accuracy", value: "~95%" },
@@ -85,7 +85,7 @@ export const projects = [
     title: "Pneumonia Detection",
     subtitle: "Automated Chest X-Ray Analysis",
     descriptionFile: "/project_descriptions/pneumonia.txt",
-    video: "/videos/pneumonia_video.mp4",
+    video: "https://www.youtube.com/embed/Wi4hqOZdHUU",
     techStack: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn"],
     metrics: [
       { label: "Accuracy", value: "93.8%" },
