@@ -4,3 +4,8 @@ out/
 .env
 desktop.ini
 *.mp4
+
+# Legacy files (removed from Next.js app)
+style.css
+script.js
+Seshajalam_offerletter.pdf
