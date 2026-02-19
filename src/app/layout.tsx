@@ -29,13 +29,13 @@ export default function RootLayout({
         <meta property="og:description" content="AI Engineer specializing in deep learning, computer vision, and NLP. Explore my projects and research." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://seshajalam.github.io" />
-        <meta property="og:image" content="https://seshajalam.github.io/images/profile.jpg" />
+        <meta property="og:image" content="https://seshajalam.github.io/images/profile.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Seshajalam G | AI Engineer Portfolio" />
         <meta name="twitter:description" content="AI Engineer specializing in deep learning, computer vision, and NLP." />
-        <meta name="twitter:image" content="https://seshajalam.github.io/images/profile.jpg" />
+        <meta name="twitter:image" content="https://seshajalam.github.io/images/profile.png" />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
