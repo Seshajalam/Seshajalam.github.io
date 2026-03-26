@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\Users\\\\seshajalam\\\\Desktop\\\\sesha_Dashboard_Portfolio\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\seshajalam\\\\Desktop\\\\sesha_Dashboard_Portfolio\" log --oneline -10)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

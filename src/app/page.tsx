@@ -8,9 +8,9 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Education from '@/components/Education';
-import Resumes from '@/components/Resumes';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Scene = dynamic(() => import('@/components/three/Scene'), { ssr: false });
 
@@ -26,10 +26,10 @@ export default function Home() {
         <Education />
         <Projects />
         <Skills />
-        <Resumes />
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

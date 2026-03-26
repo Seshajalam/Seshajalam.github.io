@@ -37,7 +37,6 @@ export const navLinks = [
   { label: "Education", href: "#education" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Resumes", href: "#resumes" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -63,7 +62,6 @@ export const stats = [
   { label: "Projects", value: 5, suffix: "+" },
   { label: "Years Experience", value: 1, suffix: "" },
   { label: "Model Accuracy", value: 95, suffix: "%" },
-  { label: "Resumes", value: 3, suffix: "" },
 ];
 
 export const projects = [
@@ -168,39 +166,18 @@ export const experience = [
 
 export const education = [
   {
-    degree: "B.Tech in Information Technology",
-    institution: "Kingston Engineering College, Vellore",
-    period: "2019 — 2023",
-    description:
-      "Core foundation in data structures, algorithms, databases, and software engineering principles.",
-  },
-  {
     degree: "M.Tech in AI & Machine Learning",
     institution: "VIT University, Vellore",
     period: "2023 — 2025",
     description:
       "Specialization in deep learning, computer vision, and natural language processing. Research focus on medical image analysis and gesture recognition systems.",
   },
-];
-
-export const resumes = [
   {
-    title: "ML Resume",
-    description: "Machine Learning & AI focused",
-    file: "/pdfs/sesha_ml.pdf",
-    icon: "ml",
-  },
-  {
-    title: "General Resume",
-    description: "Full-stack & general purpose",
-    file: "/pdfs/seshajalam_general.pdf",
-    icon: "general",
-  },
-  {
-    title: "C++ Resume",
-    description: "Systems & competitive programming",
-    file: "/pdfs/sesha_cpp.pdf",
-    icon: "cpp",
+    degree: "B.Tech in Information Technology",
+    institution: "Kingston Engineering College, Vellore",
+    period: "2019 — 2023",
+    description:
+      "Core foundation in data structures, algorithms, databases, and software engineering principles.",
   },
 ];
 
